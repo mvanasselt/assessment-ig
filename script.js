@@ -12,11 +12,16 @@ const renderProduct = function (product) {
         <img class="product-image" src="${product.image}" alt="product image">
         <span class="wishlist-icon"> ♡ </span>
         <div class="product-info">
-          <h3 class="product-name">${product.name}</h3>
-          <div class="product-detail">
-            <span class="product-description">${product.detail}</span>
-            <span class="product-price">€ ${product.price},-</span>
-          </div>
+        <h3 class="product-name">${product.name}</h3>
+        <div>
+          <button class="counter-minus no-active">-</button>
+          <input class="counter-display value=0"></input>
+          <button class="counter-plus">+</button>
+        </div>
+        <div class="product-detail">
+        <span class="product-description">${product.detail}</span>
+        <span class="product-price">€ ${product.price},-</span>
+        </div>
         </div>
     `;
   productListContainer.insertAdjacentHTML("beforeend", html);
@@ -34,9 +39,20 @@ const products = () =>
 products();
 
 productListContainer.addEventListener("click", function (event) {
-  const wishListIcon = event.target;
-  const productTile = wishListIcon.parentElement;
-  if (wishListIcon.classList.contains("wishlist-icon"))
+  const clickedItem = event.target;
+  const productTile = clickedItem.parentElement;
+  const counterDisplayElem = productTile.querySelector(".counter-display");
+  let count = counterDisplayElem.value;
+
+  if (clickedItem.classList.contains("counter-plus")) {
+    count++;
+    counterDisplayElem.value = count;
+  } else if (clickedItem.classList.contains("counter-minus")) {
+    count--;
+    counterDisplayElem.value = count;
+  }
+
+  if (clickedItem.classList.contains("wishlist-icon"))
     wishListContainer.appendChild(productTile.cloneNode(true));
 });
 

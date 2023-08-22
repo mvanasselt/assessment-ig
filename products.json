@@ -1,88 +1,74 @@
 {
     "products": [
         {
-            "name": "Pineapple",
-            "detail": "Lorem ipsum dolor sit amet",
-            "price": 69,
-            "productid": 12345,
-            "image": "pineapple.png"
-        },
-        {
             "name": "Banana",
             "detail": "Lorem ipsum dolor sit amet",
             "price": 12,
             "productid": 12346,
-            "image": "banana.png"
+            "image": "images/banana.png"
         },
         {
             "name": "Blueberries",
             "detail": "Lorem ipsum dolor sit amet",
             "price": 53,
             "productid": 12347,
-            "image": "blueberries.png"
+            "image": "images/blueberries.png"
         },
         {
             "name": "Cherries",
             "detail": "Lorem ipsum dolor sit amet",
             "price": 61,
             "productid": 12348,
-            "image": "cherry.png"
+            "image": "images/cherry.png"
         },
         {
             "name": "Coconut",
             "detail": "Lorem ipsum dolor sit amet",
             "price": 26,
             "productid": 12349,
-            "image": "coconut.png"
+            "image": "images/coconut.png"
         },
         {
             "name": "Dragonfruit",
             "detail": "Lorem ipsum dolor sit amet",
             "price": 38,
             "productid": 12350,
-            "image": "dragonfruit.png"
+            "image": "images/dragonfruit.png"
         },
         {
             "name": "Grapes",
             "detail": "Lorem ipsum dolor sit amet",
             "price": 44,
             "productid": 12351,
-            "image": "grapes.png"
+            "image": "images/grapes.png"
         },
         {
             "name": "Kumquat",
             "detail": "Lorem ipsum dolor sit amet",
             "price": 94,
             "productid": 12352,
-            "image": "kumquat.png"
+            "image": "images/kumquat.png"
         },
         {
             "name": "Mango",
             "detail": "Lorem ipsum dolor sit amet",
             "price": "99",
             "productid": 12353,
-            "image": "mango.png"
+            "image": "images/mango.png"
         },
         {
-            "name": "Grapes",
+            "name": "Pineapple",
             "detail": "Lorem ipsum dolor sit amet",
-            "price": 32,
+            "price": 69,
             "productid": 12354,
-            "image": "grapes.png"
-        },
-        {
-            "name": "Peach",
-            "detail": "Lorem ipsum dolor sit amet",
-            "price": 56,
-            "productid": 12355,
-            "image": "peach.png"
+            "image": "images/pineapple.png"
         },
         {
             "name": "Watermelon",
             "detail": "Lorem ipsum dolor sit amet",
             "price": 26,
-            "productid": 12356,
-            "image": "watermelon.png"
+            "productid": 12355,
+            "image": "images/watermelon.png"
         }
     ]
 }
