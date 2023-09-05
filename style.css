@@ -1,78 +1,90 @@
 header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #a8020f;
-    color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #332c2d;
+  color: white;
 }
 
 .header-image {
-    width: 100%;
-    height: auto;
-    background-color: white;
+  width: 100%;
+  height: auto;
+  background-color: white;
 }
 
 h2 {
-    margin: 50px 100px;
-    font-size: 32px;
+  margin: 50px 100px;
+  font-size: 32px;
 }
 
 .product-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .product-tile {
-    width: 300px;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    background-color: white
+  width: 300px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
 }
 
 .product-tile:hover {
-    box-shadow: 0px 4px 20px 1px rgba(0,0,0,0.12);
+  box-shadow: 0px 4px 20px 1px rgba(0, 0, 0, 0.12);
 }
 
 .product-image {
-    height: 250px;
-    width: 300px;
-    margin-right: 10px;
+  height: 250px;
+  width: 300px;
+  margin-right: 10px;
 }
 
 .product-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-title {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .product-detail {
-    display: flex;
+  display: flex;
 }
 
 .product-price {
-    margin: 0 20px 0 30px;
-    text-wrap: nowrap;
+  margin: 0 20px 0 30px;
+  text-wrap: nowrap;
 }
 
 #sidepanel {
-    display: none;
-    background-color: white;
-    border: 1px solid #01181d;
-    height: 100%;
-    width: 350px;
-    overflow: scroll;
+  display: none;
+  background-color: white;
+  border: 1px solid #01181d;
+  height: 100%;
+  width: 350px;
+  overflow: scroll;
 }
 
 #sidepanel.show {
-    display: block;
-    position: fixed;
-    right: 0;
-    top: 0;
+  display: block;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.wishlist-icon,
+.wishlist-icon.clicked {
+  height: 20px;
+  width: 20px;
+}
+/* .wishlist-icon {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(54deg) brightness(101%) contrast(103%);
+} */
+.wishlist-icon.clicked {
+  filter: invert(38%) sepia(70%) saturate(1399%) hue-rotate(339deg) brightness(104%) contrast(101%);
 }
