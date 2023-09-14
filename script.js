@@ -5,6 +5,7 @@ const wishListHeader = document.getElementById("wishlist-header");
 const sidePanel = document.getElementById("sidepanel");
 const wishListContainer = document.getElementById("wishlist-container");
 const sidePanelClose = document.getElementById("sidepanel-close");
+const clearThisWishList = document.getElementById("clear-wishlist");
 const wishList = JSON.parse(localStorage.getItem("wishlist"));
 
 const renderProductPage = function (product) {
@@ -74,34 +75,8 @@ const displayWishlist = async () => {
 
 products();
 
-// const products = () =>
-//   fetch("products.json")
-//     .then((response) => response.json())
-//     .then(function (data) {
-//       for (let product of data.products) {
-//         renderProductPage(product);
-//       }
-//     });
-
-// products();
-
-// const displayWishlist = function () {
-//   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-//   wishListContainer.innerHTML = "";
-//   fetch("products.json")
-//     .then((response) => response.json())
-//     .then(function (data) {
-//       const dataArray = Array.from(data.products);
-//       dataArray.forEach((product) => (product.quantity = 0));
-//       wishlist.forEach((item) => {
-//         const productIndex = dataArray.findIndex((product) => product.name === item);
-//         renderProductWishlist(dataArray[productIndex]);
-//       });
-//       console.log(dataArray);
-//     });
-// };
-
 const addToWishList = function (product) {
+  const wishList = JSON.parse(localStorage.getItem("wishlist"))|| [];;
   if (!localStorage.getItem("wishlist")) {
     localStorage.setItem("wishlist", JSON.stringify([]));
   }
@@ -119,6 +94,10 @@ const removeFromWishlist = function (product) {
   localStorage.setItem("wishlist", JSON.stringify(wishList));
   displayWishlist();
 };
+
+const clearWishList = function () {
+  localStorage.clear();
+}
 
 localStorage.setItem("count", JSON.stringify(0));
 let totalAmount = JSON.parse(localStorage.getItem("count"));
@@ -157,6 +136,11 @@ wishListHeader.addEventListener("click", function () {
   sidePanel.classList.toggle("show");
   displayWishlist();
 });
+
+clearThisWishList.addEventListener("click", function () {
+  clearWishList();
+  displayWishlist();
+})
 
 sidePanelClose.addEventListener("click", function () {
   sidePanel.classList.remove("show");
