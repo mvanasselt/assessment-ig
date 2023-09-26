@@ -6,7 +6,7 @@ const sidePanel = document.getElementById("sidepanel");
 const wishListContainer = document.getElementById("wishlist-container");
 const sidePanelClose = document.getElementById("sidepanel-close");
 const clearThisWishList = document.getElementById("clear-wishlist");
-const wishList = JSON.parse(localStorage.getItem("wishlist"));
+// const wishList = JSON.parse(localStorage.getItem("wishlist"));
 
 const renderProductPage = function (product) {
   const html = `
@@ -64,32 +64,30 @@ const displayWishlist = async () => {
 
   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   wishListContainer.innerHTML = "";
-
-  const dataArray = Array.from(productData);
-
   wishlist.forEach((item) => {
-    const productIndex = dataArray.findIndex((product) => product.name === item);
-    renderProductWishlist(dataArray[productIndex]);
+    const productIndex = productData.findIndex((product) => product.name === item);
+    renderProductWishlist(productData[productIndex]);
   });
 };
 
 products();
 
-const addToWishList = function (product) {
+const addToWishList = function (productName) {
   const wishList = JSON.parse(localStorage.getItem("wishlist"))|| [];;
   if (!localStorage.getItem("wishlist")) {
     localStorage.setItem("wishlist", JSON.stringify([]));
   }
 
-  if (!wishList.includes(product)) {
-    wishList.push(product);
+  if (!wishList.includes(productName)) {
+    wishList.push(productName);
     localStorage.setItem("wishlist", JSON.stringify(wishList));
     displayWishlist();
   }
 };
 
-const removeFromWishlist = function (product) {
-  const wishListIndex = wishList.indexOf(product);
+const removeFromWishlist = function (productName) {
+  const wishList = JSON.parse(localStorage.getItem("wishlist"));
+  const wishListIndex = wishList.indexOf(productName);
   wishList.splice(wishListIndex, 1);
   localStorage.setItem("wishlist", JSON.stringify(wishList));
   displayWishlist();
@@ -99,16 +97,14 @@ const clearWishList = function () {
   localStorage.clear();
 }
 
-localStorage.setItem("count", JSON.stringify(0));
-let totalAmount = JSON.parse(localStorage.getItem("count"));
-const productCounter = function (product) {
-  const counterDisplayElem = product.parentElement.querySelector(".counter-display");
-  const counterMinus = product.parentElement.querySelector(".counter-minus");
+const productCounter = function (clickedItem) {
+  const counterDisplayElem = clickedItem.parentElement.querySelector(".counter-display");
+  const counterMinus = clickedItem.parentElement.querySelector(".counter-minus");
   let count = counterDisplayElem.value;
-  if (product.classList.contains("counter-plus")) {
+  if (clickedItem.classList.contains("counter-plus")) {
     count++;
     counterDisplayElem.value = count;
-  } else if (product.classList.contains("counter-minus")) {
+  } else if (clickedItem.classList.contains("counter-minus")) {
     count--;
     counterDisplayElem.value = count;
   }
@@ -145,3 +141,4 @@ clearThisWishList.addEventListener("click", function () {
 sidePanelClose.addEventListener("click", function () {
   sidePanel.classList.remove("show");
 });
+

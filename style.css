@@ -7,7 +7,7 @@ header {
 
 #wishlist-header {
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
 }
 
 .header-image {
@@ -34,8 +34,8 @@ h2 {
   flex-direction: column;
   background-color: white;
   border: 1px solid black;
-  border-radius: 8px;
-  padding: 8px;
+  border-radius: 10px;
+  padding: 9px;
 }
 
 .product-tile:hover {
@@ -72,7 +72,7 @@ h2 {
   background-color: white;
   border: 1px solid #01181d;
   height: 100%;
-  width: 350px;
+  width: 360px;
   overflow: scroll;
 }
 
