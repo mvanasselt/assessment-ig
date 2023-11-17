@@ -6,7 +6,6 @@ const sidePanel = document.getElementById("sidepanel");
 const wishListContainer = document.getElementById("wishlist-container");
 const sidePanelClose = document.getElementById("sidepanel-close");
 const clearThisWishList = document.getElementById("clear-wishlist");
-// const wishList = JSON.parse(localStorage.getItem("wishlist"));
 
 const renderProductPage = function (product) {
   const html = `
@@ -65,29 +64,29 @@ const displayWishlist = async () => {
   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   wishListContainer.innerHTML = "";
   wishlist.forEach((item) => {
-    const productIndex = productData.findIndex((product) => product.name === item);
-    renderProductWishlist(productData[productIndex]);
+    renderProductWishlist(item);
   });
 };
 
 products();
 
-const addToWishList = function (productName) {
-  const wishList = JSON.parse(localStorage.getItem("wishlist"))|| [];;
+const addToWishList = function (product) {
+  const wishList = JSON.parse(localStorage.getItem("wishlist")) || [];
   if (!localStorage.getItem("wishlist")) {
     localStorage.setItem("wishlist", JSON.stringify([]));
   }
 
-  if (!wishList.includes(productName)) {
-    wishList.push(productName);
+let isProductInWishList = wishList.some(item => product.productid === item.productid)
+  if (!isProductInWishList) {
+    wishList.push(product);
     localStorage.setItem("wishlist", JSON.stringify(wishList));
     displayWishlist();
   }
 };
 
-const removeFromWishlist = function (productName) {
+const removeFromWishlist = function (product) {
   const wishList = JSON.parse(localStorage.getItem("wishlist"));
-  const wishListIndex = wishList.indexOf(productName);
+  const wishListIndex = wishList.findIndex((item) => item.productid === product.productid) ;
   wishList.splice(wishListIndex, 1);
   localStorage.setItem("wishlist", JSON.stringify(wishList));
   displayWishlist();
@@ -95,7 +94,7 @@ const removeFromWishlist = function (productName) {
 
 const clearWishList = function () {
   localStorage.clear();
-}
+};
 
 const productCounter = function (clickedItem) {
   const counterDisplayElem = clickedItem.parentElement.querySelector(".counter-display");
@@ -115,7 +114,8 @@ productListContainer.addEventListener("click", function (event) {
   const productTile = event.target.closest(".product-tile");
   const productName = productTile.querySelector(".product-name").textContent;
   if (event.target.classList.contains("add-to-wishlist")) {
-    addToWishList(productName);
+      const productIndex = productData.findIndex((product) => productName === product.name);
+      addToWishList(productData[productIndex]);
   }
 });
 
@@ -123,7 +123,8 @@ wishListContainer.addEventListener("click", function (event) {
   const productTile = event.target.closest(".product-tile");
   const productName = productTile.querySelector(".product-name").textContent;
   if (event.target.classList.contains("add-to-wishlist")) {
-    removeFromWishlist(productName);
+    const productIndex = productData.findIndex((product) => productName === product.name);
+    removeFromWishlist(productData[productIndex]);
   }
   productCounter(event.target);
 });
@@ -136,9 +137,8 @@ wishListHeader.addEventListener("click", function () {
 clearThisWishList.addEventListener("click", function () {
   clearWishList();
   displayWishlist();
-})
+});
 
 sidePanelClose.addEventListener("click", function () {
   sidePanel.classList.remove("show");
 });
-
